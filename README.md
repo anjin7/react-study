@@ -17,3 +17,11 @@
 ### 매달 Monthly
 
 - 코드 리뷰 및 발표
+
+## 구성
+
+- ReactJS 기초
+- Typescript 기초
+- ReactJS 마스터클래스
+- NextJS기초
+- 캐럿마켓 클론코딩
