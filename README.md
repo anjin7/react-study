@@ -1,6 +1,12 @@
-# react-study
+# React-Study
 
-10 weeks study
+## 구성 (10 weeks)
+
+- ReactJS 기초 (1 week)
+- Typescript 기초 (1 week)
+- ReactJS 마스터클래스 (3 weeks)
+- NextJS기초 (1 week)
+- 캐럿마켓 클론코딩 (4 weeks)
 
 ### 매일 Daily
 
@@ -17,11 +23,3 @@
 ### 매달 Monthly
 
 - 코드 리뷰 및 발표
-
-## 구성 (10 weeks)
-
-- ReactJS 기초 (1 week)
-- Typescript 기초 (1 week)
-- ReactJS 마스터클래스 (3 weeks)
-- NextJS기초 (1 week)
-- 캐럿마켓 클론코딩 (4 weeks)
