@@ -1,3 +1,10 @@
+import NavBar from '../components/NavBar'
+
 export default function Patato() {
-  return "about us"
+  return (
+    <div>
+      <NavBar />
+      <h1>About</h1>
+    </div>
+  )
 }
