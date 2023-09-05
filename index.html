@@ -20,11 +20,15 @@
     return(
       <div>
         <h3>Super Converter</h3>
-        <lable htmlFor="Minutes">Minutes</lable>
-        <input value={minutes} id="minutes" placeholder="Minutes" type="number" onChange={onChange} />
-        <h4>You want to convert {minutes}</h4>
-        <lable htmlFor="Hours">Hours</lable>
-        <input placeholder="Hours" type="number" />
+        <div>
+          <lable htmlFor="Minutes">Minutes</lable>
+          <input value={minutes} id="minutes" placeholder="Minutes" type="number" onChange={onChange} />
+        </div>
+        <div>
+          <lable htmlFor="Hours">Hours</lable>
+          <input value={(minutes/60).toFixed(2)} id="hours" placeholder="Hours" type="number" />
+        </div>
+        
       </div>
     )
   }
