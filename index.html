@@ -13,29 +13,10 @@
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script type="text/babel">
   function App(){
-    const [amount, setAmount] = React.useState(0);
-    const [flipped, setFlipped] = React.useState(false);
-    const onChange = (event) => {
-      setAmount(event.target.value)
-    }
-    const reset = () => setAmount(0);
-    const onFlipped = ()=> {
-      reset();
-      setFlipped((current)=>!current)
-    }
+
     return(
       <div>
-        <h3>Super Converter</h3>
-        <div>
-          <lable htmlFor="Minutes">Minutes</lable>
-          <input value={flipped ? amount*60 : amount} id="minutes" placeholder="Minutes" type="number" onChange={onChange} disabled={flipped} />
-        </div>
-        <div>
-          <lable htmlFor="Hours">Hours</lable>
-          <input value={flipped ? amount : (amount/60).toFixed(2)} id="hours" placeholder="Hours" type="number" onChange={onChange} disabled={!flipped} />
-        </div>
-        <button onClick={reset}>Reset</button>
-        <button onClick={onFlipped}>Flip</button>
+        
       </div>
     )
   }
