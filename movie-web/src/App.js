@@ -1,5 +1,3 @@
-// import Button from './Button';
-// import styled from './App.module.css';
 import { useEffect, useState } from "react";
 
 function App() {
@@ -11,11 +9,12 @@ function App() {
     if (toDo === "") {
       return;
     }
-    setToDos((currentArray) => [toDo, ...currentArray]);
+    setToDos((currentArray) => [...currentArray, toDo]);
     setToDo("");
     
   };
-  console.log(toDos)
+  // console.log(toDos);
+  // console.log(toDos.map((item, index) => <li key={index}>{item}</li>));
   return (
     <div className="App">
       <h1>My To Dos ({toDos.length})</h1>
@@ -28,6 +27,12 @@ function App() {
         />
         <button>Add To Do</button>
       </form>
+      <hr />
+      <ul>
+        {toDos.map((item, index) => (
+          <li key={index}>{item}</li>
+        ))}
+      </ul>
     </div>
   );
 }
