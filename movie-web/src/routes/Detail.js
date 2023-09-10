@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from 'react';
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import CharacterDetail from '../components/CharacterDetail';
 import styles from './Detail.module.css';
 
@@ -17,12 +17,15 @@ function Detail() {
     useEffect(() => {
       getCharacter();
     }, [getCharacter]);
+  const history = useHistory();
+  const goHome = () => { history.push('/') };
   return (
     <div className={styles.container}>
       {loading ? (
       <h2 className={styles.loader}>Loading Details...</h2>
       ) : (
       <div className={styles.character}>
+        <button onClick={goHome} className={styles.back}>← back</button>
         <CharacterDetail
           key={characterDetail[0].id}
           id={characterDetail[0].id}

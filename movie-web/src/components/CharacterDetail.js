@@ -8,7 +8,9 @@ function CharacterDatail({ coverImg, heroName, description }) {
       <img src={coverImg} alt={heroName} className={styles.cd__img} />
       <div className={styles.cd__container}>
         <h2 className={styles.cd__title}>{heroName}</h2>
-        <p className={styles.cd__description}>{description}</p>
+        <div className={styles.cd__description}>
+          {description.length > 15 ? <p>{description}</p> : <div className={styles.cd__block}></div>}
+        </div>
       </div>
       
     </div>

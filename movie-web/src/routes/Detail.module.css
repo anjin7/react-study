@@ -17,3 +17,15 @@
 .character{
   margin: 20px;
 }
+
+.back{
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 80px;
+  line-height: 1.5;
+  background-color: #ED1D24;
+  color: #fff;
+  border-radius: 4px;
+  margin-bottom: 12px;
+}

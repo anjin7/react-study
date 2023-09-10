@@ -26,8 +26,8 @@
 .characters {
   display: grid;
   grid-template-columns: repeat(2, minmax(400px, 1fr));
-  grid-gap: 80px;
-  padding: 50px;
+  grid-gap: 60px;
+  padding: 20px;
   width: 80%;
   padding-top: 60px;
 }
