@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback } from 'react';
 import { useParams } from "react-router-dom";
-import CharacterDatail from '../components/CharacterDatail';
+import CharacterDetail from '../components/CharacterDetail';
 import styles from './Detail.module.css';
 
 function Detail() {
@@ -23,12 +23,12 @@ function Detail() {
       <h2 className={styles.loader}>Loading Details...</h2>
       ) : (
       <div className={styles.character}>
-        <CharacterDatail
-          key={characterDetail.id}
-          id={characterDetail.id}
-          // coverImg={`${characterDetail.thumbnail.path}.${characterDetail.thumbnail.extension}`}
-          heroName={characterDetail.name} 
-          description={characterDetail.description}
+        <CharacterDetail
+          key={characterDetail[0].id}
+          id={characterDetail[0].id}
+          coverImg={`${characterDetail[0].thumbnail.path}.${characterDetail[0].thumbnail.extension}`}
+          heroName={characterDetail[0].name} 
+          description={characterDetail[0].description}
           // url={characterDetail.urls}
         />
       </div>
