@@ -28,7 +28,7 @@ function Home(){
             key={character.id}
             id={character.id}
             coverImg={`${character.thumbnail.path}.${character.thumbnail.extension}`}
-            heroName={character.title_long} 
+            heroName={character.name} 
             description={character.description}
           />
         ))}
