@@ -23,6 +23,7 @@ function Home(){
       <h2 className={styles.loader}>Loading...</h2>
       ) : (
       <div className={styles.characters}>
+        <h2 className={styles.title}>MARVEL Characters</h2>
         {characters.map(character => (
           <Character
             key={character.id}

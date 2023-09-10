@@ -3,7 +3,7 @@
   margin-bottom: 60px;
   font-weight: 300;
   padding: 20px;
-  border-radius: 5px;
+  border-radius: 4px;
   color: #adaeb9;
   display: grid;
   grid-template-columns: minmax(150px, 1fr) 2fr;
@@ -16,7 +16,7 @@
 
 .character .character__img {
   position: relative;
-  top: -40px;
+  top: -30px;
   max-width: 150px;
   width: 100%;
   margin-right: 30px;
@@ -46,4 +46,5 @@
 
 .character .character__description{
   line-height: 1.4;
+  color: #000;
 }

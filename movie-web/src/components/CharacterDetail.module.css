@@ -1,0 +1,42 @@
+.character_detail{
+  margin: 40px auto;
+  max-width: 1250px;
+  max-height: 750px;
+  display: flex;
+}
+
+.character_detail .cd__img{
+  max-height: 750px;
+  max-width: 500px;
+  height: auto;
+  width: auto;
+}
+
+.character_detail .cd__container{
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 20px;
+  background-color: #fff;
+}
+.character_detail .cd__title{
+  font-size: 32px;
+  font-weight: 900;
+  margin-top: 12px;
+}
+
+
+.character_detail .cd__description{
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+@media screen and (max-width: 1090px) {
+  .character_detail{
+    max-width: 800px;
+  }
+  .character_detail .cd__img{
+    min-width: 200px;
+    height: 100%;
+  }
+}
