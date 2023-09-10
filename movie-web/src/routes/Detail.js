@@ -32,7 +32,7 @@ function Detail() {
           coverImg={`${characterDetail[0].thumbnail.path}.${characterDetail[0].thumbnail.extension}`}
           heroName={characterDetail[0].name} 
           description={characterDetail[0].description}
-          // url={characterDetail.urls}
+          comics={characterDetail[0].comics.items}
         />
       </div>
       )}

@@ -41,6 +41,20 @@
   display: block;
 }
 
+.character_detail .cd__comics{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  font-weight: 700;
+}
+.character_detail .cd__comics li{
+  margin-right: 20px;
+  margin-bottom: 12px;
+}
+
+
 @media screen and (max-width: 1090px) {
   .character_detail{
     grid-template-columns: 1fr;
@@ -48,6 +62,7 @@
   }
   .character_detail .cd__img{
     min-width: 200px;
-    height: 100%;
+    height: auto;
+    width: auto;
   }
 }

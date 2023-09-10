@@ -31,7 +31,7 @@ function Home(){
             id={character.id}
             coverImg={`${character.thumbnail.path}.${character.thumbnail.extension}`}
             heroName={character.name} 
-            description={character.description}
+            // description={character.description}
           />
         ))}
       </div>

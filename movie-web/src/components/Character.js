@@ -9,9 +9,9 @@ function Character({ id, heroName, coverImg, description }) {
       <h2 className={styles.character__title}>
         <Link to={`/character/${id}`}>{heroName}</Link>
       </h2>
-      <div className={styles.character__container}>
+      {/* <div className={styles.character__container}>
         <p className={styles.character__description}>{description.length > 235 ? `${description.slice(0, 235)}...` : (description.length>15 ? description : "")}</p>
-      </div>
+      </div> */}
     </div>
   )
 };
@@ -20,7 +20,7 @@ Character.propTypes ={
   id: PropTypes.number.isRequired,
   coverImg: PropTypes.string.isRequired,
   heroName: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
+  // description: PropTypes.string.isRequired,
   
 }
 
