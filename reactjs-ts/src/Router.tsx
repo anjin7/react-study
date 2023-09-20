@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import About from "./screens/About";
 import Home from "./screens/Home";
 import Root from "./Root";
+import NotFound from './screens/NotFound';
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,7 @@ const router = createBrowserRouter([
         element: <About />,
       },
     ],
+    errorElement:<NotFound />
   },
 ]);
 
