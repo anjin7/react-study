@@ -4,8 +4,10 @@ import Home from "./screens/Home";
 import Root from "./Root";
 import NotFound from './screens/NotFound';
 import ErrorComponent from './components/ErrorComponent';
-import User from './screens/users/User';
-import Followers from './screens/users/Followers';
+import Author from './screens/authors/Author';
+import Books from './screens/authors/Books';
+import Chapter from './screens/authors/Chapter';
+import Character from './screens/authors/Character';
 
 const router = createBrowserRouter([
   {
@@ -22,12 +24,22 @@ const router = createBrowserRouter([
         element: <About />,
       },
       {
-        path: "users/:userId",
-        element: <User />,
+        path: "author/:authorName",
+        element: <Author />,
         children: [
           {
-            path: "followers",
-            element: <Followers />,
+            path: ":bookTitle",
+            element: <Books />,
+            children: [
+              {
+                path: "chapters",
+                element: <Chapter />
+              },
+              {
+                path: "characters",
+                element: <Character />
+              },
+            ]
           },
         ],
       },

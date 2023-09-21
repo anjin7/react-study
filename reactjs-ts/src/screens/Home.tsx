@@ -1,22 +1,14 @@
-import { Link, useSearchParams } from "react-router-dom";
-import { users } from "../db";
+import { Link} from "react-router-dom";
+import { authors } from "../db";
 
 function Home() {
-  const [readSearchParms, setSearchParams] = useSearchParams();
-  console.log(readSearchParms.get("geo"));
-  setTimeout(() => {
-    setSearchParams({
-      day: "today",
-      tomorrow: "123",
-    });
-  }, 3000);
   return (
     <div>
-      <h1>Users</h1>
+      <h1>Author</h1>
       <ul>
-        {users.map((user) => (
-          <li key={user.id}>
-            <Link to={`/users/${user.id}`}>{user.name}</Link>
+        {authors.map((author) => (
+          <li key={author.id}>
+            <Link to={`/author/${author.name}`}>{author.name}</Link>
           </li>
         ))}
       </ul>

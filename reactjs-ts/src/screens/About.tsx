@@ -2,7 +2,11 @@
 
 function About() {
   return (
-    <h1>About</h1>
+    <div>
+      <h1>About</h1>
+      <p>About Marvel Movie Character</p>
+    </div>
+    
   )
 }
 export default About;
