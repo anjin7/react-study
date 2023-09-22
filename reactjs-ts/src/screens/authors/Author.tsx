@@ -1,8 +1,7 @@
-import { Link, Outlet, useOutletContext, useParams } from "react-router-dom";
+import { Link, Outlet, useParams } from "react-router-dom";
 import { authors } from "../../db";
 
 function Author() {
-  // console.log(useOutletContext());
   const { authorName, bookTitle } = useParams();
   return (
     <div>
