@@ -17,7 +17,7 @@ const router = createBrowserRouter([
         errorElement: <ErrorComponent />,
       },
       {
-        path: "character/:id",
+        path: "character/:characterId",
         element: <Character />,
       },
     ],
