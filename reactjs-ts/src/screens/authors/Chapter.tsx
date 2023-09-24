@@ -1,12 +1,9 @@
-import { useOutletContext, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { authors } from "../../db";
 
-interface IFollowersContext {
-  chapterName: string;
-}
 
 function Chapter() {
-  const { chapterName } = useOutletContext<IFollowersContext>();
+
   const { authorName, bookTitle } = useParams();
   return (
     <div>

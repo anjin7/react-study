@@ -1,5 +1,4 @@
 import { Link, Outlet, useOutletContext, useParams } from "react-router-dom";
-import { authors } from "../../db";
 
 interface IFollowersContext {
   nameOfAuthor: string;
