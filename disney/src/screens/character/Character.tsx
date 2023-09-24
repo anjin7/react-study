@@ -1,9 +1,9 @@
 import { Link, Outlet, useOutletContext, useParams } from "react-router-dom";
-import { authors } from "../../db";
+
 
 function Character() {
-  console.log(useOutletContext());
-  const { authorId } = useParams();
+
+  const { characterId } = useParams();
   return (
     <div>
       <h1>
