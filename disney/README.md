@@ -1,3 +1,1 @@
-# ReactJS + TypeScript
-
-challenge 15
+# Chaellenge 15
