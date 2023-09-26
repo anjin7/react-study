@@ -1,38 +1,52 @@
-import { useForm } from "react-hook-form";
 import { toGoState } from "../atoms";
-import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilValue } from "recoil";
 import styled from "styled-components";
-import CreateToGo from './CreateToGo';
+import CreateToGo from "./CreateToGo";
+import ToGo from "./ToGo";
 
-
-
-const Wrapper = styled.div`
+const Container = styled.div`
   display: column;
-  max-width: 480px;
-  width: 100vw;
-  margin: 0 auto;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  text-align: center;
+  min-width: 400px;
+  margin: 10px;
 `;
 const Title = styled.h2`
   font-weight: 700;
+  font-size: 22px;
   color: white;
   margin: 20px;
 `;
 
 export default function ToGoList() {
   const toGos = useRecoilValue(toGoState);
-  console.log(toGos)
   return (
-    <Wrapper>
+    <Container>
       <Title>내가 가고싶은 나라들</Title>
       <CreateToGo />
       <ul>
-        {toGos.map((toGo) => (
-          <li key={toGo.id}>{toGo.text}</li>))}
+        {toGos
+          .filter((toGo) => toGo.category === "TO_GO")
+          .map((toGo) => (
+            <ToGo key={toGo.id} {...toGo} />
+          ))}
       </ul>
-    </Wrapper>
+      <hr />
+      <Title>내가 가본 나라들</Title>
+      <ul>
+        {toGos
+          .filter((toGo) => toGo.category === "BEEN")
+          .map((toGo) => (
+            <ToGo key={toGo.id} {...toGo} />
+          ))}
+      </ul>
+      <hr />
+      <Title>내가 좋아하는 나라들</Title>
+      <ul>
+        {toGos
+          .filter((toGo) => toGo.category === "LIKE")
+          .map((toGo) => (
+            <ToGo key={toGo.id} {...toGo} />
+          ))}
+      </ul>
+    </Container>
   );
 }

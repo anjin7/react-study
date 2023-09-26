@@ -1,15 +1,22 @@
-import { useForm } from "react-hook-form";
-import { toGoState } from "./atoms";
-import { useRecoilState, useSetRecoilState } from "recoil";
 import styled from "styled-components";
-import CreateToGo from './Components/CreateToGo';
 import ToGoList from './Components/ToGoList';
 
-export default function App() {
 
+const Wrapper = styled.div`
+  display: flex;
+  max-width: 600px;
+  width: 100vw;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+`;
+
+export default function App() {
   return (
-    <div>
+    <Wrapper>
       <ToGoList />
-    </div>
+    </Wrapper>
   );
 }

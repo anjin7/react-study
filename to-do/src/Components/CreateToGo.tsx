@@ -1,19 +1,8 @@
 import { useForm } from "react-hook-form";
 import { useSetRecoilState } from "recoil";
-import { IToGo,toGoState } from "../atoms";
+import { IToGo, toGoState } from "../atoms";
 import styled from "styled-components";
 
-
-const Wrapper = styled.div`
-  display: column;
-  max-width: 480px;
-  width: 100vw;
-  margin: 0 auto;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  text-align: center;
-`;
 const Form = styled.form`
   width: 100%;
   display: column;
@@ -41,10 +30,6 @@ const Form = styled.form`
   }
 `;
 
-interface IBoardProps {
-  toGos: IToGo[];
-  boardId: string;
-};
 interface IForm {
   toGo: string;
 }
@@ -52,11 +37,13 @@ interface IForm {
 function CreateToGo() {
   const setToGos = useSetRecoilState(toGoState);
   const { register, handleSubmit, setValue } = useForm<IForm>();
-  const saveToGo = ({ toGo }: IForm) => localStorage.setItem(toGo, JSON.stringify(toGo));
+  const toGos: IToGo[] = [];
+  const saveToGo = ({ toGo }: IForm) =>
+    localStorage.setItem(toGo, JSON.stringify(toGos));
   const onValid = ({ toGo }: IForm) => {
     setToGos((oldToGos) => [
       { text: toGo, id: Date.now(), category: "TO_GO" },
-      ...oldToGos,
+      ...oldToGos
     ]);
     setValue("toGo", "");
     saveToGo({ toGo });
@@ -69,11 +56,11 @@ function CreateToGo() {
     }
   };
   return (
-    <Wrapper>
+    <div>
       <Form onSubmit={handleSubmit(onValid)}>
         <input
           {...register("toGo", {
-            required: "Where you want to Go",
+            required: "Where you want to Go"
           })}
           type="text"
           placeholder="나라 이름"
@@ -81,7 +68,7 @@ function CreateToGo() {
         />
         <button type="submit">가자!</button>
       </Form>
-    </Wrapper>    
+    </div>
   );
 }
 
