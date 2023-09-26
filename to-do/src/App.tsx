@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
-import { IToGo, toGoState } from "./atoms";
-import { useSetRecoilState } from "recoil";
+import { toGoState } from "./atoms";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import styled from "styled-components";
 import CreateToGo from './Components/CreateToGo';
 
@@ -21,11 +21,14 @@ const Title = styled.h2`
 `;
 
 export default function App() {
-
+  const [toGos, setToGos] = useRecoilState(toGoState);
   return (
     <Wrapper>
       <Title>내가 가고싶은 나라들</Title>
-      <CreateToGo />
+      {Object.keys(toGos).map((boardId) => (
+            <CreateToGo toGos={toGos[boardId]} boardId={boardId} key={boardId} />
+          ))}
+      
     </Wrapper>
   );
 }

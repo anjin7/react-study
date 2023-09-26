@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { useSetRecoilState } from "recoil";
-import { toGoState } from "../atoms";
+import { IToGo,toGoState } from "../atoms";
 import styled from "styled-components";
 
 
@@ -41,32 +41,51 @@ const Form = styled.form`
   }
 `;
 
-
+interface IBoardProps {
+  toGos: IToGo[];
+  boardId: string;
+};
 interface IForm {
   toGo: string;
 }
 
-function CreateToGo() {
-  const setToDos = useSetRecoilState(toGoState);
+function CreateToGo({ toGos, boardId }: IBoardProps) {
+  const setToGos = useSetRecoilState(toGoState);
   const { register, handleSubmit, setValue } = useForm<IForm>();
-  const handleValid = ({ toGo }: IForm) => {
-    setToDos((oldToGos) => [
-      { text: toGo, id: Date.now(), category: "TO_GO" },
-      ...oldToGos,
-    ]);
+  const saveToGo = ({ toGo }: IForm) => localStorage.setItem(toGo, JSON.stringify(toGos));
+  const onValid = ({ toGo }: IForm) => {
+    const newToDo = {
+      id: Date.now(),
+      text: toGo
+    };
+    setToGos((allBoards) => {
+      return {
+        ...allBoards,
+        [boardId]: [newToDo, ...allBoards[boardId]]
+      };
+    });
     setValue("toGo", "");
+    saveToGo({ toGo });
+
+    const savedToGos = localStorage.getItem(toGo);
+    if (savedToGos !== null) {
+      const parsedToGos = JSON.parse(savedToGos);
+      toGos = parsedToGos;
+      parsedToGos.forEach(setToGos);
+    }
   };
   return (
     <Wrapper>
-      <Form onSubmit={handleSubmit(handleValid)}>
+      <Form onSubmit={handleSubmit(onValid)}>
         <input
           {...register("toGo", {
             required: "Where you want to Go",
           })}
           type="text"
           placeholder="나라 이름"
+          required
         />
-        <button>가자!</button>
+        <button type="submit">가자!</button>
       </Form>
     </Wrapper>    
   );
