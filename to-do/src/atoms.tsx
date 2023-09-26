@@ -1,19 +1,19 @@
 import { atom } from "recoil";
 
-export interface ITodo {
+export interface IToGo {
   id: number;
   text: string;
 };
 
-interface IToDoState {
-  [key: string]: ITodo[];
+interface IToGoState {
+  [key: string]: IToGo[];
 }
 
-export const toDoState = atom<IToDoState>({
-  key: "toDo",
+export const toGoState = atom<IToGoState>({
+  key: "toGo",
   default: {
-    "To Do": [],
-    Doing: [],
-    Done: [],
+    "To Go": [],
+    Been: [],
+    Like: [],
   },
 });
