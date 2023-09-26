@@ -49,28 +49,22 @@ interface IForm {
   toGo: string;
 }
 
-function CreateToGo({ toGos, boardId }: IBoardProps) {
+function CreateToGo() {
   const setToGos = useSetRecoilState(toGoState);
   const { register, handleSubmit, setValue } = useForm<IForm>();
-  const saveToGo = ({ toGo }: IForm) => localStorage.setItem(toGo, JSON.stringify(toGos));
+  const saveToGo = ({ toGo }: IForm) => localStorage.setItem(toGo, JSON.stringify(toGo));
   const onValid = ({ toGo }: IForm) => {
-    const newToDo = {
-      id: Date.now(),
-      text: toGo
-    };
-    setToGos((allBoards) => {
-      return {
-        ...allBoards,
-        [boardId]: [newToDo, ...allBoards[boardId]]
-      };
-    });
+    setToGos((oldToGos) => [
+      { text: toGo, id: Date.now(), category: "TO_GO" },
+      ...oldToGos,
+    ]);
     setValue("toGo", "");
     saveToGo({ toGo });
 
     const savedToGos = localStorage.getItem(toGo);
     if (savedToGos !== null) {
       const parsedToGos = JSON.parse(savedToGos);
-      toGos = parsedToGos;
+      toGo = parsedToGos;
       parsedToGos.forEach(setToGos);
     }
   };
