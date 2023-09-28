@@ -21,7 +21,7 @@ export default function ToGoList() {
   return (
     <Container>
       <Title>내가 가고싶은 나라들</Title>
-      <CreateToGo />
+      <CreateToGo toGos={} />
       <ul>
         {toGos
           .filter((toGo) => toGo.category === "TO_GO")
