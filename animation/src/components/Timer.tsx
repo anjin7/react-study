@@ -19,16 +19,28 @@ const Box = styled(motion.div)`
   justify-content: center;
   align-items: center;
   border-radius: 20px;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 1);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 10px 20px rgba(0, 0, 0, 0.06);
   font-size: 80px;
   font-weight: 900;
   color:#a1cbdd;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 `;
-const Text = styled.p`
+
+const TextBox = styled.div`
+  width: 210px;
+  display: grid;
+  gap: 10px;
+`;
+const Text = styled.span`
   font-size: 40px;
   font-weight: 900;
+  color: #fff;
+`;
+const Count = styled.span`
+  font-size: 24px;
+  font-weight: 500;
+  color: #fff;
 `;
 const Svg = styled.svg`
   width: 200px;
@@ -74,9 +86,9 @@ function Timer() {
   return (
     <div>
       <Container>
-        <Box variants={boxVariants} whileTap="click">{min}</Box>
+        <Box >{min}</Box>
         <Text>:</Text>
-        <Box variants={boxVariants} whileTap="click">{sec}</Box>
+        <Box >{sec}</Box>
       </Container>
       <Btn
         variants={boxVariants}
@@ -92,7 +104,18 @@ function Timer() {
             <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" />
           </Svg>
         }        
-      </Btn>     
+      </Btn>
+      <Container>
+        <TextBox>
+          <Count>0 / 4</Count>
+          <Text>ROUND</Text>
+        </TextBox>
+        <TextBox />
+        <TextBox>
+          <Count>0 / 12</Count>
+          <Text>GOAL</Text>
+        </TextBox>
+      </Container>
       
     </div>
 
