@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import Timer from '../components/Timer';
+import Counter from '../components/Counter';
 
 
 const Wrapper = styled.div`
-  width: 100vw;
   text-align: center;
 `;
 const Title = styled.h1`
@@ -11,6 +11,7 @@ const Title = styled.h1`
   font-size: 36px;
   font-weight: 700;
   margin-top: 30px;
+  color:#FFF;
 `;
 
 function Home() {
@@ -19,6 +20,7 @@ function Home() {
     <Wrapper>
       <Title>Pomodoro</Title>
       <Timer />
+      <Counter />  
     </Wrapper>
   );
 };
