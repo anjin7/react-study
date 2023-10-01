@@ -1,17 +1,30 @@
 import { Link } from "react-router-dom";
+import { styled } from 'styled-components';
+
+const Container = styled.header`
+  padding: 20px;
+  background-color: rgba(255,255,255,0.5);
+`;
+const List = styled.ul`
+  display: grid;
+  grid-template-columns: repeat(4, 100px);
+  gap: 40px;
+`;
+const Menu = styled.li`
+  font-size: 20px;
+  font-weight: 700;
+`;
+
 
 function Header() {
   return (
-    <header>
-      <ul>
-        <li>
+    <Container>
+      <List>
+        <Menu>
           <Link to={"/"}>Home</Link>
-        </li>
-        <li>
-          <Link to={"/about"}>About</Link>
-        </li>
-      </ul>      
-    </header>
+        </Menu>
+      </List>      
+    </Container>
   )
 }
 

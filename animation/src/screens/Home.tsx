@@ -1,49 +1,24 @@
 import styled from "styled-components";
-import { motion } from "framer-motion";
-import { useState } from 'react';
+import Timer from '../components/Timer';
 
 
 const Wrapper = styled.div`
-  margin-top: 40px;
   width: 100vw;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+  text-align: center;
 `;
-const Box = styled(motion.div)`
-  width: 200px;
-  height: 200px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 40px;
-  background-color: rgba(255, 255, 255, 1);
-  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1), 0 10px 20px rgba(0, 0, 0, 0.06);
+const Title = styled.h1`
+  min-width: 480px;
+  font-size: 36px;
+  font-weight: 700;
+  margin-top: 30px;
 `;
-
-const Circle = styled(motion.div)`
-  background-color: #00a5ff;
-  height: 100px;
-  width: 100px;
-  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1), 0 10px 20px rgba(0, 0, 0, 0.06);
-`;
-
 
 function Home() {
-  const [clicked, setClicked] = useState(false);
-  const toggleClicked = () => setClicked((prev) => !prev);
+
   return (
-    <Wrapper onClick={toggleClicked}>
-      <Box>
-        {!clicked ? (
-          <Circle layoutId="circle" style={{ borderRadius: 50 }} />
-        ) : null}
-      </Box>
-      <Box>
-        {clicked ? (
-          <Circle layoutId="circle" style={{ borderRadius: 20, scale: 2 }} />
-        ) : null}
-      </Box>
+    <Wrapper>
+      <Title>Pomodoro</Title>
+      <Timer />
     </Wrapper>
   );
 };
