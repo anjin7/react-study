@@ -29,15 +29,16 @@ const Form = styled.form`
     margin: 10px auto;
   }
 `;
-
+interface IToGoList { 
+  toGos: IToGo[];
+};
 interface IForm {
   toGo: string;
 }
 
-function CreateToGo() {
+function CreateToGo({toGos}:IToGoList) {
   const setToGos = useSetRecoilState(toGoState);
   const { register, handleSubmit, setValue } = useForm<IForm>();
-  const toGos: IToGo[] = [];
   const saveToGo = ({ toGo }: IForm) =>
     localStorage.setItem(toGo, JSON.stringify(toGos));
   const onValid = ({ toGo }: IForm) => {
@@ -47,7 +48,6 @@ function CreateToGo() {
     ]);
     setValue("toGo", "");
     saveToGo({ toGo });
-
     const savedToGos = localStorage.getItem(toGo);
     if (savedToGos !== null) {
       const parsedToGos = JSON.parse(savedToGos);
