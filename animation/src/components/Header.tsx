@@ -8,7 +8,7 @@ const Container = styled.header`
 const List = styled.ul`
   display: grid;
   grid-template-columns: repeat(4, 100px);
-  gap: 40px;
+  gap: 20px;
 `;
 const Menu = styled.li`
   font-size: 20px;
@@ -23,6 +23,9 @@ function Header() {
         <Menu>
           <Link to={"/"}>Home</Link>
         </Menu>
+        <Menu>
+          <Link to={"/about"}>About</Link>
+        </Menu>                  
       </List>      
     </Container>
   )
