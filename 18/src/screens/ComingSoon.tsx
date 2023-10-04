@@ -4,12 +4,12 @@ const Title = styled.h1`
   font-size: 24px;
 `;
 
-function About() {
+function ComingSoon () {
   return (
     <div>
-      <Title>About</Title>
+      <Title>Coming Soon</Title>
     </div>
     
   )
 }
-export default About;
+export default ComingSoon ;
