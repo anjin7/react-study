@@ -1,8 +1,9 @@
 import { Link, useMatch } from "react-router-dom";
 import { styled } from 'styled-components';
-import { motion } from "framer-motion";
+import { motion, useAnimation, useViewportScroll } from "framer-motion";
+import { useEffect } from 'react';
 
-const Container = styled.header`
+const Container = styled(motion.nav)`
   padding: 16px;
   height: 60px;
   margin: 0 auto;
@@ -21,7 +22,7 @@ const Items = styled.ul`
 const Item = styled.li`
   margin: 4px 12px;
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 900;
   font-size: 18px;
   color: #fff;
   transition: color 0.3s ease-in-out;
@@ -30,7 +31,7 @@ const Item = styled.li`
   justify-content: center;
   flex-direction: column;
   &:hover {
-    color: #000;
+    color: #ff0000;
   }
 `;
 const Circle = styled(motion.span)`
@@ -45,12 +46,33 @@ const Circle = styled(motion.span)`
   background-color: #dd0000;
 `;
 
+const navVariants = {
+  top: {
+    background: "linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0))",
+    backgroundColor: "rgba(0, 0, 0, 0)",
+  },
+  scroll: {
+    backgroundColor: "rgba(0, 0, 0, 0.3)",
+  },
+};
+
 function Header() {
   const popularMatch = useMatch("/");
   const comingMatch = useMatch("/coming-soon");
   const nowMatch = useMatch("/now-playing");
+  const navAnimation = useAnimation();
+  const { scrollY } = useViewportScroll();
+  useEffect(() => {
+    scrollY.onChange(() => {
+      if (scrollY.get() > 80) {
+        navAnimation.start("scroll");
+      } else {
+        navAnimation.start("top");
+      }
+    });
+  }, [scrollY, navAnimation]);
   return (
-    <Container>
+    <Container variants={navVariants} animate={navAnimation} initial={"top"}>
       <Items>
         <Item>
           <Link to={"/"}>
