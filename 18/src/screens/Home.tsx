@@ -17,7 +17,7 @@ function Home() {
 
   return (
     <Wrapper>
-      <Title>Home</Title>
+      <Title>Popular</Title>
     </Wrapper>
   );
 };

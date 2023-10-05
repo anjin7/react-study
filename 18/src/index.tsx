@@ -61,8 +61,8 @@ table {
 body {
   font-weight: 300;
   font-family: 'Source Sans Pro', sans-serif;
-  background-color: #a1cbdd;
-  color:black;
+  background-color: #222;
+  color:#fff;
   line-height: 1.2;
 }
 a {
