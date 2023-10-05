@@ -3,12 +3,15 @@ import { styled } from 'styled-components';
 import { motion } from "framer-motion";
 
 const Container = styled.header`
-  padding: 12px 8px;
-  background-color: rgba(255,255,255,0.2);
+  padding: 16px;
+  height: 60px;
   margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: fixed;
+  top:0;
+  width: 100%;
 `;
 const Items = styled.ul`
   display: flex;
@@ -32,10 +35,10 @@ const Item = styled.li`
 `;
 const Circle = styled(motion.span)`
   position: absolute;
-  width: 24px;
-  height: 3px;
-  border-radius: 2.5px;
-  bottom: -8px;
+  width: 6px;
+  height: 6px;
+  border-radius: 3px;
+  bottom: -10px;
   left: 0;
   right: 0;
   margin: 0 auto;

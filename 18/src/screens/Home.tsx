@@ -11,6 +11,7 @@ const Title = styled.h1`
   font-weight: 700;
   margin-top: 30px;
   color:#FFF;
+  height: 3000px;
 `;
 
 function Home() {
