@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import styled from "styled-components";
+
 
 
 
@@ -36,7 +38,7 @@ const boxVariants = {
 };
 
 function Home() {
-
+let navigate = useNavigate();
   return (
     <Wrapper>
       <Title>Popular</Title>
