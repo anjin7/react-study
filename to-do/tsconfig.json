@@ -22,5 +22,5 @@
   },
   "include": [
     "src"
-  ]
+, "../code-challenge/InputForm.tsx", "../code-challenge/List.tsx"  ]
 }
