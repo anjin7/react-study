@@ -1,22 +1,23 @@
-import { motion, AnimatePresence, useViewportScroll } from 'framer-motion';
-import { PathMatch, useMatch, useNavigate } from 'react-router-dom';
+import { motion, AnimatePresence, useViewportScroll } from "framer-motion";
+import { PathMatch, useMatch, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { getPopular, IAPIResponse, makeImagePath,IMovieDetail, getMovie } from "../api";
-import { useQuery } from "react-query";
-import { useState } from 'react';
+import { getPopular, IAPIResponse, makeImagePath } from "../api";
+import { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 
 const Wrapper = styled.div`
   text-align: center;
   display: flex;
   justify-content: center;
-  height: 2000px;
   margin-top: 60px;
 `;
+
 const Section = styled.h1`
+  position: absolute;
   font-size: 36px;
   font-weight: 700;
   margin-top: 30px;
-  color:#FFF;
+  color: #fff;
 `;
 const Loader = styled.div`
   height: 20vh;
@@ -24,6 +25,7 @@ const Loader = styled.div`
   justify-content: center;
   align-items: center;
 `;
+
 const Banner = styled.div<{ bgPhoto: string }>`
   height: 100vh;
   display: flex;
@@ -37,19 +39,16 @@ const Banner = styled.div<{ bgPhoto: string }>`
 
 const Title = styled.h2`
   font-size: 68px;
-  margin-bottom: 20px; ;
+  margin-bottom: 20px;
 `;
 
 const Overview = styled.p`
   font-size: 30px;
   width: 50%;
 `;
-
-const Slider = styled.div`
+const Container = styled.div`
   position: relative;
-  top: -100px;
 `;
-
 const Row = styled(motion.div)`
   display: grid;
   gap: 5px;
@@ -63,9 +62,9 @@ const Box = styled(motion.div)<{ bgPhoto: string }>`
   background-size: cover;
   background-position: center center;
   height: 200px;
-  font-size: 66px;
+  font-size: 30px;
   cursor: pointer;
-  
+
   &:first-child {
     transform-origin: center left;
   }
@@ -75,14 +74,15 @@ const Box = styled(motion.div)<{ bgPhoto: string }>`
 `;
 const Info = styled(motion.div)`
   padding: 10px;
-  background-color: ${(props) => props.theme.black.lighter};
   opacity: 0;
   position: absolute;
   width: 100%;
   bottom: 0;
   h4 {
     text-align: center;
+    color: #888;
     font-size: 18px;
+    font-weigt: 700;
   }
 `;
 
@@ -104,8 +104,9 @@ const BigMovie = styled(motion.div)`
   margin: 0 auto;
   border-radius: 15px;
   overflow: hidden;
-  background-color: rgba(0,0,0,1);
-  box-shadow: 0 2px 3px rgba(255, 255, 255, 0.1), 0 10px 20px rgba(255, 255, 255, 0.06);
+  background-color: rgba(0, 0, 0, 1);
+  box-shadow: 0 2px 3px rgba(255, 255, 255, 0.1),
+    0 10px 20px rgba(255, 255, 255, 0.06);
 `;
 const BigCover = styled.div`
   width: 100%;
@@ -133,29 +134,29 @@ const BigOverview = styled.p`
 
 const rowVariants = {
   hidden: {
-    x: window.outerWidth + 5,
+    x: window.outerWidth + 5
   },
   visible: {
-    x: 0,
+    x: 0
   },
   exit: {
-    x: -window.outerWidth - 5,
-  },
+    x: -window.outerWidth - 5
+  }
 };
 
 const boxVariants = {
   normal: {
-    scale: 1,
+    scale: 1
   },
   hover: {
     scale: 1.3,
-    y: -80,
+    y: -60,
     transition: {
       delay: 0.3,
       duaration: 0.1,
-      type: "tween",
-    },
-  },
+      type: "tween"
+    }
+  }
 };
 const infoVariants = {
   hover: {
@@ -163,27 +164,23 @@ const infoVariants = {
     transition: {
       delay: 0.3,
       duaration: 0.1,
-      type: "tween",
-    },
-  },
+      type: "tween"
+    }
+  }
 };
-const btnVariants = {
-  hover: { scale: 1.2, },
-  click: { scale: 0.9, },
-};
-
-const offset = 6;
+const offset = 3;
 
 function Home() {
   const navigate = useNavigate();
   const { scrollY } = useViewportScroll();
-  const bigMovieMatch: PathMatch<string> | null = useMatch("/movie?id=:movieId");
+  const bigMovieMatch: PathMatch<string> | null = useMatch("/popular/:movieId");
   const { data, isLoading } = useQuery<IAPIResponse>(
     ["movies", "popluar"],
     getPopular
   );
   const [index, setIndex] = useState(0);
   const [leaving, setLeaving] = useState(false);
+  const toggleLeaving = () => setLeaving((prev) => !prev);
   const incraseIndex = () => {
     if (data) {
       if (leaving) return;
@@ -193,11 +190,10 @@ function Home() {
       setIndex((prev) => (prev === maxIndex ? 0 : prev + 1));
     }
   };
-  const toggleLeaving = () => setLeaving((prev) => !prev);
   const onBoxClicked = (movieId: number) => {
-    navigate(`/movie?id=${movieId}`);
+    navigate(`/popular/${movieId}`);
   };
-  const onOverlayClick = () => navigate("/"); 
+  const onOverlayClick = () => navigate("/");
   const clickedMovie =
     bigMovieMatch?.params.movieId &&
     data?.results.find((movie) => movie.id === +bigMovieMatch.params.movieId);
@@ -207,8 +203,8 @@ function Home() {
       {isLoading ? (
         <Loader>Loading...</Loader>
       ) : (
-          <div>
-            <Banner
+        <Container>
+          <Banner
             onClick={incraseIndex}
             bgPhoto={makeImagePath(data?.results[0].backdrop_path || "")}
           >
@@ -217,33 +213,33 @@ function Home() {
           </Banner>
           <AnimatePresence initial={false} onExitComplete={toggleLeaving}>
             <Row
-                variants={rowVariants}
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-                transition={{ type: "tween", duration: 1 }}
-                key={index}
-              >
-                {data?.results
-                  .slice(1)
-                  .slice(offset * index, offset * index + offset)
-                  .map((movie) => (
-                    <Box
-                      layoutId={movie.id + ""}
-                      key={movie.id}
-                      whileHover="hover"
-                      initial="normal"
-                      variants={boxVariants}
-                      onClick={() => onBoxClicked(movie.id)}
-                      transition={{ type: "tween" }}
-                      bgPhoto={makeImagePath(movie.backdrop_path)}
-                    >
-                      <Info variants={infoVariants}>
-                        <h4>{movie.title}</h4>
-                      </Info>
-                    </Box>
-                  ))}
-          </Row>
+              variants={rowVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              transition={{ type: "tween", duration: 1 }}
+              key={index}
+            >
+              {data?.results
+                .slice(1)
+                .slice(offset * index, offset * index + offset)
+                .map((movie) => (
+                  <Box
+                    layoutId={movie.id + ""}
+                    key={movie.id}
+                    whileHover="hover"
+                    initial="normal"
+                    variants={boxVariants}
+                    onClick={() => onBoxClicked(movie.id)}
+                    transition={{ type: "tween" }}
+                    bgPhoto={makeImagePath(movie.backdrop_path)}
+                  >
+                    <Info variants={infoVariants}>
+                      <h4>{movie.title}</h4>
+                    </Info>
+                  </Box>
+                ))}
+            </Row>
           </AnimatePresence>
           <AnimatePresence>
             {bigMovieMatch ? (
@@ -262,28 +258,23 @@ function Home() {
                       <BigCover
                         style={{
                           backgroundImage: `linear-gradient(to top, black, transparent), url(${makeImagePath(
-                            clickedMovie.backdrop_path,
-                          )})`,
+                            clickedMovie.backdrop_path
+                          )})`
                         }}
                       />
-                        <BigTitle>{clickedMovie.title}</BigTitle>                        
-                        <BigOverview>
-                          {(clickedMovie.genre_ids.map((genre)=>genre))}
-                        </BigOverview>                        
+                      <BigTitle>{clickedMovie.title}</BigTitle>
+                      <BigOverview></BigOverview>
                       <BigOverview>{clickedMovie.overview}</BigOverview>
-                      
                     </>
                   )}
                 </BigMovie>
               </>
             ) : null}
           </AnimatePresence>
-          </div>
-        )
-      }
-
+        </Container>
+      )}
     </Wrapper>
   );
-};
+}
 
 export default Home;
