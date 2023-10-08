@@ -1,12 +1,9 @@
 import { motion, AnimatePresence, useViewportScroll } from 'framer-motion';
-import { useMatch, useNavigate } from 'react-router-dom';
+import { PathMatch, useMatch, useNavigate } from 'react-router-dom';
 import styled from "styled-components";
-import { getPopular,IAPIResponse } from "../api";
-import { useQuery } from '@tanstack/react-query';
+import { getPopular, IAPIResponse, makeImagePath,IMovieDetail, getMovie } from "../api";
+import { useQuery } from "react-query";
 import { useState } from 'react';
-
-
-
 
 const Wrapper = styled.div`
   text-align: center;
@@ -15,7 +12,7 @@ const Wrapper = styled.div`
   height: 2000px;
   margin-top: 60px;
 `;
-const Title = styled.h1`
+const Section = styled.h1`
   font-size: 36px;
   font-weight: 700;
   margin-top: 30px;
@@ -27,10 +24,32 @@ const Loader = styled.div`
   justify-content: center;
   align-items: center;
 `;
+const Banner = styled.div<{ bgPhoto: string }>`
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 60px;
+  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)),
+    url(${(props) => props.bgPhoto});
+  background-size: cover;
+`;
+
+const Title = styled.h2`
+  font-size: 68px;
+  margin-bottom: 20px; ;
+`;
+
+const Overview = styled.p`
+  font-size: 30px;
+  width: 50%;
+`;
+
 const Slider = styled.div`
   position: relative;
   top: -100px;
 `;
+
 const Row = styled(motion.div)`
   display: grid;
   gap: 5px;
@@ -66,6 +85,7 @@ const Info = styled(motion.div)`
     font-size: 18px;
   }
 `;
+
 const Overlay = styled(motion.div)`
   position: fixed;
   top: 0;
@@ -110,20 +130,6 @@ const BigOverview = styled.p`
   line-height: 1.75;
   font-size: 18px;
 `;
-const Btn = styled(motion.button)`
-  margin: 24px;
-  width: 60px;
-  height: 60px;
-  color: rgba(255,255,255,0.8);
-  background-color: rgba(0,0,0,0);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 10px 20px rgba(0, 0, 0, 0.06);
-  border-radius: 100px;
-  border: none;
-  padding: 0;
-`;
-const Svg = styled.svg`
-`;
-
 
 const rowVariants = {
   hidden: {
@@ -169,9 +175,9 @@ const btnVariants = {
 const offset = 6;
 
 function Home() {
-  let navigate = useNavigate();
+  const navigate = useNavigate();
   const { scrollY } = useViewportScroll();
-  const bigMovieMatch = useMatch("/movies/:movieId");
+  const bigMovieMatch: PathMatch<string> | null = useMatch("/movie?id=:movieId");
   const { data, isLoading } = useQuery<IAPIResponse>(
     ["movies", "popluar"],
     getPopular
@@ -189,17 +195,28 @@ function Home() {
   };
   const toggleLeaving = () => setLeaving((prev) => !prev);
   const onBoxClicked = (movieId: number) => {
-    navigate(`/movies/${movieId}`);
+    navigate(`/movie?id=${movieId}`);
   };
-  const onOverlayClick = () => navigate("/");
+  const onOverlayClick = () => navigate("/"); 
+  const clickedMovie =
+    bigMovieMatch?.params.movieId &&
+    data?.results.find((movie) => movie.id === +bigMovieMatch.params.movieId);
   return (
     <Wrapper>
-      <Title>Popular</Title>
-      {isLoading ? (<Loader>Loading...</Loader>) :
-        (
-          <Slider>
-            <AnimatePresence initial={false} onExitComplete={toggleLeaving}>
-              <Row
+      <Section>Popular</Section>
+      {isLoading ? (
+        <Loader>Loading...</Loader>
+      ) : (
+          <div>
+            <Banner
+            onClick={incraseIndex}
+            bgPhoto={makeImagePath(data?.results[0].backdrop_path || "")}
+          >
+            <Title>{data?.results[0].title}</Title>
+            <Overview>{data?.results[0].overview}</Overview>
+          </Banner>
+          <AnimatePresence initial={false} onExitComplete={toggleLeaving}>
+            <Row
                 variants={rowVariants}
                 initial="hidden"
                 animate="visible"
@@ -219,27 +236,52 @@ function Home() {
                       variants={boxVariants}
                       onClick={() => onBoxClicked(movie.id)}
                       transition={{ type: "tween" }}
-                      bgPhoto={makeImagePath(movie.backdrop_path, "w500")}
+                      bgPhoto={makeImagePath(movie.backdrop_path)}
                     >
                       <Info variants={infoVariants}>
                         <h4>{movie.title}</h4>
                       </Info>
                     </Box>
                   ))}
-              </Row>
-            </AnimatePresence>
-          </Slider>
+          </Row>
+          </AnimatePresence>
+          <AnimatePresence>
+            {bigMovieMatch ? (
+              <>
+                <Overlay
+                  onClick={onOverlayClick}
+                  exit={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                />
+                <BigMovie
+                  style={{ top: scrollY.get() + 100 }}
+                  layoutId={bigMovieMatch.params.movieId}
+                >
+                  {clickedMovie && (
+                    <>
+                      <BigCover
+                        style={{
+                          backgroundImage: `linear-gradient(to top, black, transparent), url(${makeImagePath(
+                            clickedMovie.backdrop_path,
+                          )})`,
+                        }}
+                      />
+                        <BigTitle>{clickedMovie.title}</BigTitle>                        
+                        <BigOverview>
+                          {(clickedMovie.genre_ids.map((genre)=>genre))}
+                        </BigOverview>                        
+                      <BigOverview>{clickedMovie.overview}</BigOverview>
+                      
+                    </>
+                  )}
+                </BigMovie>
+              </>
+            ) : null}
+          </AnimatePresence>
+          </div>
         )
       }
-      <Btn
-        variants={btnVariants}
-        whileHover="hover"
-        whileTap="click"
-      >
-        <Svg fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path clipRule="evenodd" fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.28 7.22a.75.75 0 00-1.06 1.06L8.94 10l-1.72 1.72a.75.75 0 101.06 1.06L10 11.06l1.72 1.72a.75.75 0 101.06-1.06L11.06 10l1.72-1.72a.75.75 0 00-1.06-1.06L10 8.94 8.28 7.22z" />
-        </Svg>
-      </Btn>
+
     </Wrapper>
   );
 };

@@ -1,5 +1,5 @@
 import { Link, useMatch } from "react-router-dom";
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 import { motion, useAnimation, useViewportScroll } from "framer-motion";
 import { useEffect } from 'react';
 
