@@ -1,6 +1,9 @@
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import styled from "styled-components";
+import { getPopular,IAPIResponse } from "../api";
+import { useQuery } from '@tanstack/react-query';
+import { useState } from 'react';
 
 
 
@@ -18,18 +21,26 @@ const Title = styled.h1`
   margin-top: 30px;
   color:#FFF;
 `;
+const Loader = styled.div`
+  height: 20vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 const Btn = styled(motion.button)`
   margin: 24px;
   width: 60px;
   height: 60px;
-  color: #fff;
-  background-color: rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.8);
+  background-color: rgba(0,0,0,0);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 10px 20px rgba(0, 0, 0, 0.06);
   border-radius: 100px;
   border: none;
+  padding: 0;
 `;
 const Svg = styled.svg`
+
 `;
 
 const boxVariants = {
@@ -37,11 +48,30 @@ const boxVariants = {
   click: { scale: 0.9, },
 };
 
+const offset = 6;
+
 function Home() {
-let navigate = useNavigate();
+  let navigate = useNavigate();
+  const { data, isLoading } = useQuery<IAPIResponse>(
+    ["movies", "popluar"],
+    getPopular
+  );
+  const [index, setIndex] = useState(0);
+  const [leaving, setLeaving] = useState(false);
+  const incraseIndex = () => {
+    if (data) {
+      if (leaving) return;
+      toggleLeaving();
+      const totalMovies = data.results.length - 1;
+      const maxIndex = Math.floor(totalMovies / offset) - 1;
+      setIndex((prev) => (prev === maxIndex ? 0 : prev + 1));
+    }
+  };
+  const toggleLeaving = () => setLeaving((prev) => !prev);
   return (
     <Wrapper>
       <Title>Popular</Title>
+      {isLoading?(<Loader>Loading...</Loader>):<h2>popluar</h2>}
       <Btn
         variants={boxVariants}
         whileHover="hover"
