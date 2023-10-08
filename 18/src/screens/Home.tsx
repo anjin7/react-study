@@ -10,10 +10,13 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   margin-top: 60px;
+  overflow-x: hidden;
 `;
 
 const Section = styled.h1`
   position: absolute;
+  z-index: 3;
+  top: 60px;
   font-size: 36px;
   font-weight: 700;
   margin-top: 30px;
@@ -27,7 +30,7 @@ const Loader = styled.div`
 `;
 
 const Banner = styled.div<{ bgPhoto: string }>`
-  height: 100vh;
+  height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -168,7 +171,7 @@ const infoVariants = {
     }
   }
 };
-const offset = 3;
+const offset = 6;
 
 function Home() {
   const navigate = useNavigate();
