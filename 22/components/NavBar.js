@@ -6,7 +6,6 @@ export default function NavBar() {
   const router = useRouter();
   return (
     <nav>
-      <img src="/vercel.svg" />
       <div>
         <Link href="/" legacyBehavior>
           <a className={router.pathname === "/" ? "active" : ""}>Home</a>
