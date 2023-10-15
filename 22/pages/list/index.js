@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 export default function listIndex() {
   const router = useRouter();
-    const [best, setBest] = useState();
+  const [best, setBest] = useState();
   useEffect(() => {
     (async () => {
       const { results } = await (
@@ -11,15 +11,22 @@ export default function listIndex() {
           `https://books-api.nomadcoders.workers.dev/list?name=${router.query.name}`
         )
       ).json();
-      setBest(results);
+      const books = results.books;
+      setBest(books);
     })();
   }, []);
-  console.log(best)
   return (
     <div className='container'>
-      <h4>{router.query.name || "Loading..."}</h4>
-      <div>
+      <h1>{ router.query.name.toUpperCase().split('-').join(' ') || "Loading..."}</h1>
+      <div className='container--booklist'>
         {!best && <h4>Loading...</h4>}
+        {best?.map((book) => (
+          <div className="container--book" key={book.rank}>
+            <h3>{book.title}</h3>
+            <h5>{book.author}</h5>
+            <p>{book.description}</p>
+          </div>
+        ))}
       </div>
     </div>
   )

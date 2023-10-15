@@ -11,16 +11,16 @@ export default function Detail() {
           `https://books-api.nomadcoders.workers.dev/list?name=${router.query.name}`
         )
       ).json();
-      setBest(results);
+      const books = results.books;
+      setBest(books);
     })();
   }, []);
-  console.log(best.books)
   return (
     <div className='container'>
       <h4>{router.query.name || "Loading..."}</h4>
       <div>
         {!best && <h4>Loading...</h4>}
-        
+        detail
       </div>
     </div>
   )

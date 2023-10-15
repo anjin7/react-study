@@ -26,7 +26,6 @@ export default function IndexPage() {
       setList(results);
     })();
   }, []);
-  console.log(list)
   return (
     <div>
       <div className='container'>
