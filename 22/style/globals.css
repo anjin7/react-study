@@ -70,6 +70,7 @@ a {
   background-color: #fff;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 20px 60px -20px,
   rgba(0, 0, 0, 0.3) 0px 10px 60px -30px;
+  
 }
 .container h1 {
   font-size: 28px;
@@ -78,4 +79,15 @@ a {
 .container p {
   font-size: 15px;
   margin-top: 10px;
+}
+.container .container--list{
+  display: grid;
+}
+.container .container--list h4{
+  margin: 10px;
+}
+.container .container--list h4 a{
+  border: 1px solid silver;
+  border-radius: 8px;
+  padding: 4px 12px;
 }
