@@ -10,6 +10,8 @@ export default function NavBar() {
         <Link href="/" legacyBehavior>
           <a className={router.pathname === "/" ? "active" : ""}>Home</a>
         </Link>
+      </div>
+      <div>
         <Link href="/about" legacyBehavior>
           <a className={router.pathname === "/about" ? "active" : ""}>About</a>
         </Link>
@@ -18,27 +20,29 @@ export default function NavBar() {
         nav {
           display: flex;
           gap: 10px;
-          flex-direction: column;
           align-items: center;
+          justify-content: space-between;
           padding-top: 20px;
           padding-bottom: 10px;
           box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
             rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
-        }
-        img {
-          max-width: 100px;
-          margin-bottom: 5px;
+          border: 1px solid black;
         }
         nav a {
-          font-weight: 600;
-          font-size: 18px;
+          font-weight: 900;
+          font-size: 24px;
+          border-bottom: 1px solid black;
+          margin: 0 10px;
+        }
+        nav a:hover{
+          border-bottom: 1px solid silver;
+          color: plum;
         }
         .active {
-          color: tomato;
+          color: darkviolet;
         }
         nav div {
-          display: flex;
-          gap: 10px;
+
         }
       `}</style>
     </nav>
