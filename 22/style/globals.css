@@ -48,11 +48,12 @@ table {
 * {
   box-sizing: border-box;
 }
+
 body {
-  font-family: 'Dancing Script','Times New Roman','Noto Serif', serif;
+  font-family: 'Coming Soon','Noto Serif', serif;
   background-color: #fff;
   color:#000;
-  line-height: 1.2;
+  line-height: 1.5;
   font-size: 24px;
   font-weight: 900;
 }

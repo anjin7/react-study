@@ -30,7 +30,7 @@ export default function NavBar() {
         }
         nav a {
           font-weight: 900;
-          font-size: 24px;
+          font-size: 22px;
           border-bottom: 1px solid black;
           margin: 0 10px;
         }
