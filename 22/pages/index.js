@@ -21,7 +21,6 @@ export default function IndexPage() {
   }, []);
   return (
     <div>
-      <NavBar />
       Home
     </div>);
 }
