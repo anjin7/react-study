@@ -114,9 +114,11 @@ a {
 }
 .container .container--book h5{
   margin: 10px;
-  font-size: 18px;
+  font-size: 16px;
+  color: rgb(225, 140, 235);
 }
 .container .container--book p{
   margin: 10px;
   font-size: 16px;
+  color: rgb(170, 150, 140);
 }
