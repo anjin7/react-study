@@ -21,24 +21,17 @@ export default function IndexPage() {
   }, []);
   return (
     <div>
-      <div className='container--home'>
+      <div className='container'>
         <h1>The New York Times Best Seller Explorer</h1>
+        <div className='container--list'>
+          {!list && <h4>Loading...</h4>}
+      {list?.map((list) => (
+        <div key={list.list_name_encoded}>
+          <h4>{list.list_name} ➝</h4>
+        </div>
+      ))}
+        </div>
       </div>
-      <style jsx>{`
-        .container--home{
-          width: 640px;
-          margin: 0 auto;
-          padding: 30px 40px;
-          background-color: #fff;
-          box-shadow: rgba(50, 50, 93, 0.25) 0px 20px 60px -20px,
-            rgba(0, 0, 0, 0.3) 0px 10px 60px -30px;
-        }
-        .container--home h1 {
-          font-size: 28px;
-          margin-bottom: 20px;
-        }
-        
-      `}</style>
     </div>
   );
 }

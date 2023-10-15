@@ -36,10 +36,10 @@ export default function NavBar() {
         }
         nav a:hover{
           border-bottom: 1px solid silver;
-          color: plum;
+          color: rgb(225, 140, 235);
         }
         .active {
-          color: darkviolet;
+          color: rgb(190, 85, 185);
         }
         nav div {
 
