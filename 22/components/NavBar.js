@@ -22,6 +22,7 @@ export default function NavBar() {
           gap: 10px;
           align-items: center;
           justify-content: space-between;
+          background-color: #fff;
           padding-top: 20px;
           padding-bottom: 10px;
           box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
