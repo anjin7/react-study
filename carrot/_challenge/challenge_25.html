@@ -1,9 +1,12 @@
 <div class="relative grid min-h-screen grid-cols-3 justify-center gap-8 overflow-hidden bg-pink-100 px-20 py-20 font-['Noto_sans']">
-  <div class="min-w-[320px] max-w-[400px] bg-white p-8 shadow-sm">
+  <div class="min-w-[320px] max-w-[360px] bg-white p-8 shadow-sm">
     <h2 class="my-4 mb-10 text-3xl font-extrabold">Weather</h2>
     <div class="grid gap-6 font-extrabold">
-      <div class="flex h-24 items-center justify-between rounded-2xl border border-b-[6px] border-t-2 border-black p-4">
-        <div>1</div>
+      <div class="flex h-24 items-center justify-between rounded-2xl border border-b-[6px] border-t-2 border-black bg-white p-4">
+        <div class="flex-col">
+          <h5 class="text-lg">Carsius</h5>
+          <p class="text-xs">Mars, 12AM</p>
+        </div>
         <div class="flex">
           <div class="h-10 w-10">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
@@ -14,31 +17,46 @@
         </div>
       </div>
       <div class="flex h-24 items-center justify-between rounded-2xl border border-b-[6px] border-t-2 border-black bg-yellow-300 p-4">
-        <div>1</div>
-        <div class="h-10 w-10">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
-            <path xmlns="http://www.w3.org/2000/svg" d="M16 13V20M4 14.7519C3.37037 13.8768 3 12.8059 3 11.6493C3 9.20008 4.8 6.9375 7.5 6.5C8.34694 4.48637 10.3514 3 12.6893 3C15.684 3 18.1317 5.32251 18.3 8.25C19.8893 8.94488 21 10.6503 21 12.4969C21 13.4232 20.7205 14.2842 20.2413 15M12 14V21M8 13V20" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
+        <div class="flex-col">
+          <h5 class="text-lg">Dlacria</h5>
+          <p class="text-xs">Mars, 12AM</p>
         </div>
-        <div>3</div>
+        <div class="flex">
+          <div class="h-10 w-10">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+              <path xmlns="http://www.w3.org/2000/svg" d="M16 13V20M4 14.7519C3.37037 13.8768 3 12.8059 3 11.6493C3 9.20008 4.8 6.9375 7.5 6.5C8.34694 4.48637 10.3514 3 12.6893 3C15.684 3 18.1317 5.32251 18.3 8.25C19.8893 8.94488 21 10.6503 21 12.4969C21 13.4232 20.7205 14.2842 20.2413 15M12 14V21M8 13V20" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+          <div class="mx-2 text-3xl">85°F</div>
+        </div>
       </div>
       <div class="flex h-24 items-center justify-between rounded-2xl border border-b-[6px] border-t-2 border-black bg-teal-500 p-4">
-        <div>1</div>
-        <div class="h-10 w-10">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
-            <path d="M12 3V4M12 20V21M4 12H3M6.31412 6.31412L5.5 5.5M17.6859 6.31412L18.5 5.5M6.31412 17.69L5.5 18.5001M17.6859 17.69L18.5 18.5001M21 12H20M16 12C16 14.2091 14.2091 16 12 16C9.79086 16 8 14.2091 8 12C8 9.79086 9.79086 8 12 8C14.2091 8 16 9.79086 16 12Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
+        <div class="flex-col">
+          <h5 class="text-lg">New York</h5>
+          <p class="text-xs">USA, 12AM</p>
         </div>
-        <div>3</div>
+        <div class="flex">
+          <div class="h-10 w-10">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+              <path d="M12 3V4M12 20V21M4 12H3M6.31412 6.31412L5.5 5.5M17.6859 6.31412L18.5 5.5M6.31412 17.69L5.5 18.5001M17.6859 17.69L18.5 18.5001M21 12H20M16 12C16 14.2091 14.2091 16 12 16C9.79086 16 8 14.2091 8 12C8 9.79086 9.79086 8 12 8C14.2091 8 16 9.79086 16 12Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+          <div class="mx-2 text-3xl">85°F</div>
+        </div>
       </div>
       <div class="flex h-24 items-center justify-between rounded-2xl border border-b-[6px] border-t-2 border-black bg-orange-500 p-4 text-white">
-        <div>1</div>
-        <div class="h-10 w-10">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
-            <path d="M9.5 15H9.51M15.5 15H15.51M9.5 19H9.51M12.5 17H12.51M12.5 21H12.51M15.5 19H15.51M6 16.4438C4.22194 15.5683 3 13.7502 3 11.6493C3 9.20008 4.8 6.9375 7.5 6.5C8.34694 4.48637 10.3514 3 12.6893 3C15.684 3 18.1317 5.32251 18.3 8.25C19.8893 8.94488 21 10.6503 21 12.4969C21 14.0582 20.206 15.4339 19 16.2417" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
+        <div class="flex-col">
+          <h5 class="text-lg">Zomato</h5>
+          <p class="text-xs">India, 12AM</p>
         </div>
-        <div>3</div>
+        <div class="flex">
+          <div class="h-10 w-10">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+              <path d="M9.5 15H9.51M15.5 15H15.51M9.5 19H9.51M12.5 17H12.51M12.5 21H12.51M15.5 19H15.51M6 16.4438C4.22194 15.5683 3 13.7502 3 11.6493C3 9.20008 4.8 6.9375 7.5 6.5C8.34694 4.48637 10.3514 3 12.6893 3C15.684 3 18.1317 5.32251 18.3 8.25C19.8893 8.94488 21 10.6503 21 12.4969C21 14.0582 20.206 15.4339 19 16.2417" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+          <div class="mx-2 text-3xl">20°F</div>
+        </div>
       </div>
       <div class="mx-auto my-4 h-10 w-10 rounded-full border border-b-2 border-black p-1 ring-1 ring-black">
         <svg fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -48,7 +66,7 @@
     </div>
   </div>
 
-  <div class="relative min-w-[320px] max-w-[400px] bg-white p-8 shadow-sm">
+  <div class="relative min-w-[320px] max-w-[360px] bg-white p-8 shadow-sm">
     <div class="absolute top-12 h-10 w-10 rounded-full border border-b-2 border-black p-1 ring-1 ring-black">
       <svg fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
@@ -121,7 +139,7 @@
     <div class="rounded-2xl bg-blue-700 py-3 text-center font-extrabold text-white">Let's get it done</div>
   </div>
 
-  <div class="relative min-w-[320px] max-w-[400px] bg-yellow-300 p-8 shadow-sm">
+  <div class="relative min-w-[320px] max-w-[360px] bg-yellow-300 p-8 shadow-sm">
     <h3 class="my-4 mb-10 text-center text-2xl font-extrabold">Friends</h3>
     <div class="absolute top-12 h-10 w-10 rounded-full border border-b-2 border-black bg-white p-1 ring-1 ring-black">
       <svg fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
