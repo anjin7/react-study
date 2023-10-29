@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 const Home: NextPage = () => {
   return (
     <div className="relative pointer-events-auto flex min-h-screen flex-col justify-center overflow-hidden bg-blue-100 font-['Noto_sans']">
-      <div className="relative h-[900px] mx-auto my-8 w-[600px] rounded-3xl bg-white px-10 pt-8 shadow-xl bg-pink-200 border-2 border-b-[6px] border-r-[6px] border-black">
+      <div className="relative h-[1200px] mx-auto my-8 w-[600px] rounded-3xl bg-white px-10 pt-8 shadow-xl bg-pink-200 border-2 border-b-[6px] border-r-[6px] border-black">
         <h1 className="text-center mt-8 mb-16 text-3xl font-extrabold">
           Job Application Form
         </h1>
@@ -81,15 +81,27 @@ const Home: NextPage = () => {
             <div className="my-2">
               <input type="radio" name="want" value="why" id="why" />
               <label className="font-bold mx-2" htmlFor="why">
-                I dont know why
+                I don&#39;t know why
               </label>
             </div>
           </div>
           <div className="mb-8">
-            <h2 className="text-xl font-extrabold">Salary</h2>
+            <h2 className="text-xl font-extrabold my-2">Salary</h2>
+            <select className="w-full border-black border-[2px] rounded-md px-3 py-1 font-bold">
+              <option value="50K">$50K</option>
+              <option value="100K">$100K</option>
+              <option value="150K">$150K</option>
+              <option value="200K">$200K</option>
+            </select>
           </div>
+
           <div className="mb-8">
             <h2 className="text-xl font-extrabold">Introduce your self</h2>
+            <input
+              type="text"
+              id="introduce"
+              className="w-full border-black border-[2px] rounded-md px-3 py-1 font-bold"
+            />
           </div>
         </form>
         <div className="mb-8">
@@ -104,9 +116,9 @@ const Home: NextPage = () => {
           type="submit"
           value="Give me this job"
           className="rounded-2xl text-lg font-extrabold w-full 
-        px-24 py-6 shadow-xl bg-yellow-300 hover:bg-yellow-100 border-2 
-        border-b-[6px] border-r-[6px] border-black focus:border-[2px] 
-        focus:border-t-[6px] focus:border-l-[6px] focus:bg-sky-200"
+        px-24 py-6 shadow-xl bg-yellow-300 hover:bg-yellow-200 border-2 
+        border-b-[6px] border-r-[6px] border-black active:border-[2px] 
+        active:border-t-[6px] active:border-l-[6px] active:bg-sky-100 duration-[60ms]"
         />
       </div>
     </div>
