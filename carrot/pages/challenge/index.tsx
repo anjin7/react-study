@@ -4,11 +4,13 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 
 interface AppForm {
+  department: string;
+  why: string;
   introduce: string;
   dreams: string;
   email: string;
   errors?: string;
-}
+};
 
 const Home: NextPage = () => {
   const {
@@ -17,30 +19,46 @@ const Home: NextPage = () => {
     formState: { errors }
   } = useForm<AppForm>();
   const [submitted, setSubmitted] = useState(false);
-  const onSubmit = (data:AppForm) => {
+  const onSubmit = (_data: AppForm) => {
     setSubmitted(true);
   };
 
   return (
     <div className="relative pointer-events-auto flex min-h-screen flex-col justify-center overflow-hidden bg-blue-100 font-['Noto_sans']">
-      <div className="relative h-[1280px] mx-auto my-8 w-[600px] rounded-3xl bg-white px-10 pt-8 shadow-xl bg-pink-200 border-2 border-b-[6px] border-r-[6px] border-black">
+      <div className="relative mx-auto my-8 h-[1300px] w-[640px] rounded-3xl bg-white px-10 pt-8 shadow-xl bg-pink-200 border-2 border-b-[6px] border-r-[6px] border-black">
         <h1 className="text-center mt-8 mb-12 text-3xl font-extrabold">
           Job Application Form
         </h1>
 
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="my-8">
-            <h2 className="text-xl font-extrabold">
-              What department do you want to work for?
-            </h2>
+            <div className="flex">
+              <h2 className="text-xl font-extrabold">
+                What department do you want to work for?
+              </h2>
+              <span className="font-bold text-red-600 mx-3">
+                {errors.department?.message}
+              </span>
+            </div>
             <div className="my-2">
-              <input type="radio" name="department" value="sales" id="sales" />
+              <input
+                {...register("department", {
+                  required: "*required"
+                })}
+                type="radio"
+                name="department"
+                value="sales"
+                id="sales"
+              />
               <label className="font-bold mx-2" htmlFor="sales">
                 Sales
               </label>
             </div>
             <div className="my-2">
               <input
+                {...register("department", {
+                  required: "*required"
+                })}
                 type="radio"
                 name="department"
                 value="marketing"
@@ -52,6 +70,9 @@ const Home: NextPage = () => {
             </div>
             <div className="my-2">
               <input
+                {...register("department", {
+                  required: "*required"
+                })}
                 type="radio"
                 name="department"
                 value="accounting"
@@ -63,6 +84,9 @@ const Home: NextPage = () => {
             </div>
             <div className="my-2">
               <input
+                {...register("department", {
+                  required: "*required"
+                })}
                 type="radio"
                 name="department"
                 value="service"
@@ -75,29 +99,67 @@ const Home: NextPage = () => {
           </div>
 
           <div className="my-8">
-            <h2 className="text-xl font-extrabold">
-              Why do you want to join this company?
-            </h2>
+            <div className="flex">
+              <h2 className="text-xl font-extrabold">
+                Why do you want to join this company?
+              </h2>
+              <span className="font-bold text-red-600 mx-3">
+                {errors.why?.message}
+              </span>
+            </div>
+
             <div className="my-2">
-              <input type="radio" name="want" value="money" id="money" />
+              <input
+                {...register("why", {
+                  required: "*required"
+                })}
+                type="radio"
+                name="why"
+                value="money"
+                id="money"
+              />
               <label className="font-bold mx-2" htmlFor="money">
                 I want money!
               </label>
             </div>
             <div className="my-2">
-              <input type="radio" name="want" value="love" id="love" />
+              <input
+                {...register("why", {
+                  required: "*required"
+                })}
+                type="radio"
+                name="why"
+                value="love"
+                id="love"
+              />
               <label className="font-bold mx-2" htmlFor="love">
                 I love this company
               </label>
             </div>
             <div className="my-2">
-              <input type="radio" name="want" value="learn" id="learn" />
+              <input
+                {...register("why", {
+                  required: "*required"
+                })}
+                type="radio"
+                name="why"
+                value="learn"
+                id="learn"
+              />
               <label className="font-bold mx-2" htmlFor="learn">
                 I want to learn
               </label>
             </div>
             <div className="my-2">
-              <input type="radio" name="want" value="why" id="why" />
+              <input
+                {...register("why", {
+                  required: "*required"
+                })}
+                type="radio"
+                name="why"
+                value="why"
+                id="why"
+              />
               <label className="font-bold mx-2" htmlFor="why">
                 I don&#39;t know why
               </label>
@@ -178,7 +240,9 @@ const Home: NextPage = () => {
         active:border-t-[6px] active:border-l-[6px] active:bg-sky-100 duration-[60ms]"
           />
         </form>
-        {submitted ? "Thank you" : ""}
+        <div className="font-bold my-6 text-center">
+          {submitted ? "Thank you" : ""}
+        </div>
       </div>
     </div>
   );
