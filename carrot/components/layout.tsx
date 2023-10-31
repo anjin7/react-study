@@ -45,7 +45,7 @@ export default function Layout({
       <div className={cls("pt-12", hasTabBar ? "pb-24" : "")}>{children}</div>
       {hasTabBar ? (
         <nav className="bg-white max-w-xl text-gray-700 border-t fixed bottom-0 w-full px-10 pb-5 pt-3 flex justify-between text-xs">
-          <Link href="/">
+          <Link href="/" legacyBehavior>
             <a
               className={cls(
                 "flex flex-col items-center space-y-2 ",
@@ -71,7 +71,7 @@ export default function Layout({
               <span>홈</span>
             </a>
           </Link>
-          <Link href="/community">
+          <Link href="/community" legacyBehavior>
             <a
               className={cls(
                 "flex flex-col items-center space-y-2 ",
@@ -97,7 +97,7 @@ export default function Layout({
               <span>동네생활</span>
             </a>
           </Link>
-          <Link href="/chats">
+          <Link href="/chats" legacyBehavior>
             <a
               className={cls(
                 "flex flex-col items-center space-y-2 ",
@@ -123,7 +123,7 @@ export default function Layout({
               <span>채팅</span>
             </a>
           </Link>
-          <Link href="/live">
+          <Link href="/live" legacyBehavior>
             <a
               className={cls(
                 "flex flex-col items-center space-y-2 ",
@@ -149,7 +149,7 @@ export default function Layout({
               <span>라이브</span>
             </a>
           </Link>
-          <Link href="/profile">
+          <Link href="/profile" legacyBehavior>
             <a
               className={cls(
                 "flex flex-col items-center space-y-2 ",
