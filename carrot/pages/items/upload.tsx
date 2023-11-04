@@ -1,8 +1,8 @@
 import type { NextPage } from "next";
-import Button from "../../components/button";
-import Input from "../../components/input";
-import Layout from "../../components/layout";
-import TextArea from "../../components/textarea";
+import Button from "@components/button";
+import Input from "@components/input";
+import Layout from "@components/layout";
+import TextArea from "@components/textarea";
 
 const Upload: NextPage = () => {
   return (
@@ -27,7 +27,7 @@ const Upload: NextPage = () => {
             <input className="hidden" type="file" />
           </label>
         </div>
-    <Input required label="Name" name="name" type="text" />
+        <Input required label="Name" name="name" type="text" />
         <Input
           required
           label="Price"
@@ -36,11 +36,10 @@ const Upload: NextPage = () => {
           type="text"
           kind="price"
         />
-    <TextArea name="description" label="Description" />
+        <TextArea name="description" label="Description" />
         <Button text="Upload item" />
       </form>
     </Layout>
   );
 };
-
 export default Upload;

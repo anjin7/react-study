@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
-import Button from "../../components/button";
-import Layout from "../../components/layout";
+import Button from "@components/button";
+import Layout from "@components/layout";
 
 const ItemDetail: NextPage = () => {
   return (
@@ -31,6 +31,7 @@ const ItemDetail: NextPage = () => {
               the first motherfucker to get shot. You understand?
             </p>
             <div className="flex items-center justify-between space-x-2">
+              <Button large text="Talk to seller" />
               <button className="p-3 rounded-md flex items-center justify-center text-gray-400 hover:bg-gray-100 hover:text-gray-500">
                 <svg
                   className="h-6 w-6 "
@@ -49,7 +50,7 @@ const ItemDetail: NextPage = () => {
                 </svg>
               </button>
             </div>
-            </div>
+          </div>
         </div>
         <div>
           <h2 className="text-2xl font-bold text-gray-900">Similar items</h2>
